@@ -1,6 +1,7 @@
 flask
 flask-sqlalchemy
 flask-wtf
+wtforms-sqlalchemy
 pytest
 pytest-cov
 pandas
@@ -8,3 +9,5 @@ plotly
 xlrd
 openpyxl
 matplotlib
+joblib
+requests

@@ -645,6 +645,3 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
-
-# Tutorial working files
-src/no_github/

@@ -1,4 +1,4 @@
-# COMP0034 2025 Computer practicals
+# COMP0034 2025 Computer practicals (Flask app)
 
 These are worked examples of the activities. They are not coursework exemplars!
 
