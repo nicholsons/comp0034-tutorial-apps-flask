@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% block title %}Quiz{% endblock %}
+{% block content %}
+<div class="col-md-6">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.quiz_name.label }} {{ form.quiz_name(size=40, class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.close_date.label }} {{ form.close_date(class="form-control") }}
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Save Quiz</button>
+    </form>
+    {% if form.errors %}
+    <ul class="errors">
+        {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+        {% for error in field_errors %}
+        <li>{{ form[field_name].label }}: {{ error }}</li>
+        {% endfor %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+{% endblock %}

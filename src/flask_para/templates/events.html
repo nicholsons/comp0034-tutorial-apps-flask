@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}Paralympics{% endblock %}
+{% block content %}
+<h1>Paralympics</h1>
+<div class="row">
+    <div class="col-6">
+        <h2>Summer paralympics</h2>
+        {# For loop to iterate each event and add a row linked text #}
+        {% for event in events %}
+            {% if event['type'] == 'summer' %}
+                {# text with a hyperlink to the page #}
+                <a href="{{ url_for('main.get_event', event_id=event.event_id) }}">{{ event.year }} {{ event.host }}</a>
+                <br>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="col-6">
+        <h2>Winter paralympics</h2>
+        {# For loop to iterate each event and add a row linked text #}
+        {% for event in events %}
+            {% if event.type == 'winter' %}
+                {# text with a hyperlink to the page #}
+                <a href="{{ url_for('main.get_event', event_id=event.event_id) }}">{{ event.year }} {{ event.host }}</a>
+                <br>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

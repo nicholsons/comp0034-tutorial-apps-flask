@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block title %}Index-jinja{% endblock %}
+{% block content %}
+ <h1>Page that uses a Jinja template</h1>
+    <p>This page inherits the HTML structure from layout.html</p>
+    <p>The h1 heading and paragraphs are specific to this page and placed inside a Jinja block that has been named 'content'</p>
+    <p>The page title in the browser has also been set for this page. It should show as "Index-jinja"</p>
+    <p>This page uses bootstrap css to provide the styling</p>
+{% endblock %}

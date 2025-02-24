@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}News{% endblock %}
+{% block content %}
+<!--From https://mdbootstrap.com/docs/standard/extended/news-feed/-->
+<div class="row gx-5">
+    <div class="col-md-6 mb-4">
+        <span class="badge bg-danger px-2 py-1 shadow-1-strong mb-3">News of the day</span>
+        {% for story in stories %}
+        <h4><strong>{{ story.title }}</strong></h4>
+        <p class="text-muted">{{ story.text }}</p>
+        <p>
+            <a href="{{ story.url }}">
+                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Read more
+                </button>
+            </a>
+        </p>
+        <hr>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

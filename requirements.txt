@@ -1,0 +1,10 @@
+flask
+flask-sqlalchemy
+flask-wtf
+pytest
+pytest-cov
+pandas
+plotly
+xlrd
+openpyxl
+matplotlib
