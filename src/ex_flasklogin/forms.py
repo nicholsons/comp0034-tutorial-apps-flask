@@ -1,15 +1,12 @@
 from flask_wtf import FlaskForm
-from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, TextAreaField, EmailField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, ValidationError, EqualTo
 
-from flask_login_example import db, photos
-from flask_login_example.models import User, Profile
+from ex_flasklogin import db
+from ex_flasklogin.models import User, Profile
 
 
 class SignupForm(FlaskForm):
-    first_name = StringField(label='First name', validators=[DataRequired(message='First name required')])
-    last_name = StringField(label='Last name', validators=[DataRequired(message='Last name required')])
     email = EmailField(label='Email address', validators=[DataRequired(message='Email address required')])
     password = PasswordField(label='Password', validators=[DataRequired(message='Password required')])
     password_repeat = PasswordField(label='Repeat Password',
@@ -43,7 +40,6 @@ class ProfileForm(FlaskForm):
     """ Class for the profile form"""
     username = StringField(label='Username', validators=[DataRequired(message='Username is required')])
     bio = TextAreaField(label='Bio', description='Write something about yourself')
-    photo = FileField('Profile picture', validators=[FileAllowed(photos, 'Images only!')])
 
     def validate_username(self, username):
         profile = db.session.execute(db.select(Profile).filter_by(username=username.data)).scalar_one_or_none()

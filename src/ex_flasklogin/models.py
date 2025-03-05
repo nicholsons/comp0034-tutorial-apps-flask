@@ -2,7 +2,7 @@ from sqlalchemy.orm import Mapped, mapped_column
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
-from flask_login_example import db
+from ex_flasklogin import db
 
 
 class User(db.Model, UserMixin):
@@ -14,8 +14,6 @@ class User(db.Model, UserMixin):
     """
     id: Mapped[int] = mapped_column(db.Integer, primary_key=True)
     email: Mapped[str] = mapped_column(db.String, unique=True, nullable=False)
-    first_name: Mapped[str] = mapped_column(db.String, unique=True, nullable=False)
-    last_name: Mapped[str] = mapped_column(db.String, unique=True, nullable=False)
     password: Mapped[str] = mapped_column(db.String, unique=True, nullable=False)
     profile = db.relationship('Profile', back_populates='user')
 
@@ -34,6 +32,5 @@ class Profile(db.Model):
     id: Mapped[int] = mapped_column(db.Integer, primary_key=True)
     username: Mapped[str] = mapped_column(db.String, unique=True, nullable=False)
     bio: Mapped[str] = mapped_column(db.String, nullable=True)
-    photo: Mapped[str] = mapped_column(db.String, nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     user = db.relationship('User', back_populates='profile')

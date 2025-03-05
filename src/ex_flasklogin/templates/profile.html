@@ -9,15 +9,8 @@
         <dl>
             {{ render_field(form.username) }}
             {{ render_field(form.bio) }}
-            {{ render_field(form.photo, class="custom-file", id="input_file") }}
-
         </dl>
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
-    {% if photo_filename %}
-        <br>
-        <p>Current photo:</p>
-        <img src="{{url_for('static', filename='images')}}/{{ photo_filename }}" class="img-thumbnail" width="15%">
-    {% endif %}
 </div>
 {% endblock %}

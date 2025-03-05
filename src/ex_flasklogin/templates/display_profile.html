@@ -2,9 +2,8 @@
 {% set title = 'Profile Display' %}
 {% from "_formhelpers.html" import render_field %}
 {% block content %}
-    {% for result, filename in profiles %}
+    {% for result in profiles %}
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top img-thumbnail" src="{{ url_for('static', filename='/images/'+filename) }}" alt="User profile photo">
             <div class="card-body">
                 <h5 class="card-title">{{ result.username }}</h5>
                 <p class="card-text">{{ result.bio }}</p>

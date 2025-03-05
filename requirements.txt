@@ -9,5 +9,15 @@ plotly
 xlrd
 openpyxl
 matplotlib
-joblib
 requests
+# For the Flask login app
+flask-login
+# For the pyjwt extended app only
+flask-jwt-extended
+httpie
+# For the machine learning app only
+joblib
+scikit-learn
+# For the Flask in Dash app only
+dash
+dash-bootstrap-components
