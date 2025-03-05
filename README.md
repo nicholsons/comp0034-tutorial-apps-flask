@@ -10,7 +10,7 @@ The sub-packages are:
 |:-------------------|:----------------------------------------------------------------------------|:-----------------------------------------------------------| 
 | `data`             | the database and data files for paralympics app                             | N/A                                                        |
 | `paralympics`      | Flask activities in weeks 6-9 (SQLAlchemy from week 7 on).                  | `flask --app paralympics run --debug`                      |
-| `paralympics_sq3`  | Flask activities weeks 7-9 (sqlite3 instead of SQLAlchemy)                  | See below. Initialise the database before running the app. |
+| `paralympics_sq3`  | Demo of some routes using sqlite3 instead of SQLAlchemy                     | See below. Initialise the database before running the app. |
 | `ex_flasklogin`    | Simple example using Flask-Login                                            | `flask --app ex_flasklogin run --debug`                    |
 | `ex_jwtextended`   | Simple example using Flask-JWT-Extended                                     | `flask --app ex_jwtextended run --debug`                   |
 | `ex-mlmodel`       | Simple example of an app with a machine learning prediction (Iris data set) | `flask --app "ex_mlmodel:create_app('dev')" run --debug`   |
