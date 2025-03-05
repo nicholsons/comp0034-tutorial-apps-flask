@@ -4,7 +4,7 @@ Contains functions to create the paralympics database without data.
 """
 import sqlite3
 
-from flask_para import add_data
+from paralympics import add_data
 
 
 def create_db(cursor, connection):

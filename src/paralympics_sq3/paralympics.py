@@ -6,9 +6,9 @@ import pandas as pd
 import requests
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 
-from flask_para_sq3.db import get_db
-from flask_para_sq3.figures import line_chart
-from flask_para_sq3.forms import PredictionForm, QuizForm
+from paralympics_sq3.db import get_db
+from paralympics_sq3.figures import line_chart
+from paralympics_sq3.forms import PredictionForm, QuizForm
 
 main = Blueprint('main', __name__)
 

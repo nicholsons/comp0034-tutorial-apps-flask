@@ -9,8 +9,8 @@ import pandas as pd
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy import func
 
-from flask_para import db
-from flask_para.models import Country, Disability, DisabilityEvent, Event, Host, HostEvent, MedalResult, \
+from paralympics import db
+from paralympics.models import Country, Disability, DisabilityEvent, Event, Host, HostEvent, MedalResult, \
     Participants
 
 

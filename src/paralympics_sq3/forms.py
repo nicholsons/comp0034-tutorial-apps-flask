@@ -3,7 +3,7 @@ from wtforms import IntegerField, StringField
 from wtforms.fields.choices import SelectField
 from wtforms.validators import DataRequired, Optional, Regexp, ValidationError
 
-from flask_para_sq3.db import get_db
+from paralympics_sq3.db import get_db
 
 
 class QuizForm(FlaskForm):

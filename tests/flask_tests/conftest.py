@@ -2,7 +2,7 @@ import importlib.resources
 import os
 
 import pytest
-from flask_para import create_app, db
+from paralympics import create_app, db
 from sqlalchemy.orm import Session
 
 

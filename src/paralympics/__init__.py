@@ -48,7 +48,7 @@ def create_app(test_config=None):
         # This will only work once the models are defined
 
         # This imports the models
-        from flask_para import models
+        from paralympics import models
         # If the database file does not exist, it will be created
         # If the tables do not exist, they will be created but does not overwrite or update existing tables
         db.create_all()
@@ -56,11 +56,11 @@ def create_app(test_config=None):
         # Import and use the function to add the data to the database only if it is empty
         # If query of the Events returns None, then the database is assumed empty
         if db.session.execute(db.select(models.Event).limit(1)).first() is None:
-            from flask_para.add_data import add_all_data
+            from paralympics.add_data import add_all_data
             add_all_data()
 
         # Register the blueprint
-        from flask_para.paralympics import main
+        from paralympics.paralympics import main
         app.register_blueprint(main)
 
     # return the app

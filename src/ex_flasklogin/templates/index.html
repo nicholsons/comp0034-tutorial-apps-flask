@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <br>
+        <h3>Instructions</h3>
+        <ol>
+            <li>Use the navbar signup link to create an account</li>
+            <li>Login using the account you just created</li>
+            <li>Go to the Profile and create one.</li>
+            <li>Logout</li>
+            <li>If you try to access the <a href="{{ url_for('profile')}}">profile route</a> now it should force you to login.</li>
+        </ol>
+    </div>
+{% endblock %}

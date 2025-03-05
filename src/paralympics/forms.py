@@ -4,8 +4,8 @@ from wtforms.fields.numeric import IntegerField
 from wtforms.validators import DataRequired, Optional, Regexp
 from wtforms_sqlalchemy.fields import QuerySelectField
 
-from flask_para import db
-from flask_para.models import Country
+from paralympics import db
+from paralympics.models import Country
 
 
 class QuizForm(FlaskForm):

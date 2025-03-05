@@ -1,7 +1,7 @@
 import pandas as pd
 import plotly.express as px
 
-from flask_para.models import Event, Participants
+from paralympics.models import Event, Participants
 
 
 def line_chart(feature, db):

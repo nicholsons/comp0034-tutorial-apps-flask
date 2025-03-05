@@ -31,7 +31,7 @@ def create_app(test_config=None):
     db.init_app(app)
 
     # Register the blueprint
-    from flask_para_sq3.paralympics import main
+    from paralympics_sq3.paralympics import main
     app.register_blueprint(main)
 
     # return the app

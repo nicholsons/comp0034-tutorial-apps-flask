@@ -3,7 +3,7 @@ from typing import List, Optional
 from sqlalchemy import ForeignKey, Integer, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from flask_para import db
+from paralympics import db
 
 
 # Note: db.Model is the declarative base class for SQLAlchemy that was defined in the __init__.py file

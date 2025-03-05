@@ -133,7 +133,7 @@ def test_prediction_returns_int():
     WHEN a request is made to get_prediction with valid data
     THEN the result should be an integer
     """
-    from flask_para.paralympics import make_prediction
+    from paralympics.paralympics import make_prediction
     prediction = make_prediction(2030, "Germany")
     assert isinstance(prediction, int)
 
@@ -144,6 +144,6 @@ def test_prediction_no_data_returns_error():
     WHEN a request is made to get_prediction with invalid data
     THEN the result should be an error message with 'Error making prediction'
     """
-    from flask_para.paralympics import make_prediction
+    from paralympics.paralympics import make_prediction
     prediction = make_prediction(2030, "Invalid")
     assert "Error making prediction" in prediction

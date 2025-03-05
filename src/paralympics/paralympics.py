@@ -5,10 +5,10 @@ import pandas as pd
 import requests
 from flask import Blueprint, abort, flash, redirect, render_template, request, url_for
 
-from flask_para import db
-from flask_para.figures import line_chart
-from flask_para.forms import PredictionForm, QuizForm
-from flask_para.models import Event, Host, HostEvent, Quiz
+from paralympics import db
+from paralympics.figures import line_chart
+from paralympics.forms import PredictionForm, QuizForm
+from paralympics.models import Event, Host, HostEvent, Quiz
 
 main = Blueprint('main', __name__)
 
