@@ -2,7 +2,7 @@ from pathlib import Path
 import pickle
 import numpy as np
 from flask import render_template, current_app as app
-from flask_iris.forms import PredictionForm
+from ex_mlmodel.forms import PredictionForm
 
 
 @app.route("/", methods=["GET", "POST"])

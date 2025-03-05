@@ -13,7 +13,7 @@ The sub-packages are:
 | `paralympics_sq3`  | Flask activities weeks 7-9 (sqlite3 instead of SQLAlchemy)                  | See below. Initialise the database before running the app. |
 | `ex_flasklogin`    | Simple example using Flask-Login                                            | `flask --app ex_flasklogin run --debug`                    |
 | `ex_jwtextended`   | Simple example using Flask-JWT-Extended                                     | `flask --app ex_jwtextended run --debug`                   |
-| `ex-mlmodel`       | Simple example of an app with a machine learning prediction (Iris data set) | `flask --app ex_mlmodel run --debug`                       |
+| `ex-mlmodel`       | Simple example of an app with a machine learning prediction (Iris data set) | `flask --app "ex_mlmodel:create_app('dev')" run --debug`   |
 | `ex_dash_in_flask` | Simple example hosting a Dash app inside a Flask app                        | `flask --app ex_dash_in_flask run --debug`                 |
 
 

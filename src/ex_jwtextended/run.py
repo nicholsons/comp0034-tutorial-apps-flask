@@ -1,4 +1,4 @@
-from jwtexample import create_app
+from ex_jwtextended import create_app
 
 app = create_app()
 

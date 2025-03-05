@@ -1,8 +1,8 @@
 from pathlib import Path
 import logging
 from flask import Flask
-from flask_iris.create_ml_model import create_model
-from flask_iris.config import app_config
+from ex_mlmodel.create_ml_model import create_model
+from ex_mlmodel.config import app_config
 
 def create_app(config_name=None):
     """Create and configure the Flask app
@@ -22,9 +22,9 @@ def create_app(config_name=None):
     app.config.from_object(app_config[config_name])
 
     with app.app_context():
-        from flask_iris import routes
+        from ex_mlmodel import routes
 
-    # If the ml model file isn't present, create it. Requires scikit-learn to be installed.
+    # If the ml model file (model.pkl) isn't present, create it. Requires scikit-learn to be installed.
     # create_model("lr")
 
     return app

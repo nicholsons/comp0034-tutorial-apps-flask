@@ -1,6 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import IntegerField, StringField
-from wtforms.fields.choices import SelectField
+from wtforms import StringField
 from wtforms.validators import DataRequired, Optional, Regexp, ValidationError
 
 from paralympics_sq3.db import get_db
@@ -19,8 +18,3 @@ class QuizForm(FlaskForm):
         quiz = db.execute('SELECT * from quiz where quiz_name = ?', (quiz_name.data,)).fetchone()
         if quiz:
             raise ValidationError('Quiz name already exists. Please choose a different name.')
-
-
-class PredictionForm(FlaskForm):
-    year = IntegerField('Year', validators=[DataRequired()])
-    team = SelectField('Team', choices=[], validators=[DataRequired()])

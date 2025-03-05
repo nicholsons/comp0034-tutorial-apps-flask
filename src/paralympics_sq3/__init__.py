@@ -9,7 +9,7 @@ def create_app(test_config=None):
     # configure the Flask app (see later notes on how to generate your own SECRET_KEY)
     app.config.from_mapping(
         SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'paralympics.sqlite'),
+        DATABASE=os.path.join(app.instance_path, 'paralympicsq3.db')
     )
 
     if test_config is None:

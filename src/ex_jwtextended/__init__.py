@@ -17,7 +17,7 @@ def create_app():
     db.init_app(app)
 
     with app.app_context():
-        from jwtexample.models import User
+        from ex_jwtextended.models import User
         db.create_all()
         batman = User(username="batman", password="robin")
         panther = User(username="panther", password="claw")
@@ -25,7 +25,7 @@ def create_app():
         db.session.add(panther)
         db.session.commit()
 
-    from jwtexample.routes import bp
+    from ex_jwtextended.routes import bp
     app.register_blueprint(bp)
 
     return app

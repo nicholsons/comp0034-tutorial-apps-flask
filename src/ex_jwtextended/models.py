@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Mapped, mapped_column
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from jwtexample import db, jwt
+from ex_jwtextended import db, jwt
 
 
 class User(db.Model):

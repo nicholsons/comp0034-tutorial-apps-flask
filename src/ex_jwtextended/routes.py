@@ -2,9 +2,24 @@
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import create_access_token, current_user, get_jwt_identity, jwt_required
 
-from jwtexample.models import User
+from ex_jwtextended.models import User
 
 bp = Blueprint('main', __name__)
+
+
+# Index page used just to display the instructions in case students don't read the README!
+@bp.route("/", methods=["GET"])
+def index():
+    return jsonify(
+        message_1="Welcome to the JWT Extended example! Please read the README.md file in the folder for instructions.",
+        message_2="To login use the terminal with httpie.",
+        message_3="Enter `http POST :5000/login username=panther password=claw`",
+        message_4="This will print the access_token to the terminal. Copy the access token then use the commands below.",
+        message_5='`export JWT="paste-your-access-token-here"`',
+        message_6='`http GET :5000/who_am_i Authorization:"Bearer $JWT"`',
+        message_7="This should return JSON with the id and username.",
+        message_8="To show the message if login fails enter `http POST :5000/login username=batman password=password`"
+    )
 
 
 # Create a route to authenticate your users and return JWTs.
@@ -33,6 +48,7 @@ def who():
         id=current_user.id,
         username=current_user.username,
     )
+
 
 # Protect a route with jwt_required, which will kick out requests
 # without a valid JWT present.
