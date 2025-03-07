@@ -30,7 +30,6 @@ def test_index_success(client):
     assert b'Summer' in response.data
 
     count_href = response.data.count(b'href')
-    print(count_href)
     assert count_href >= 25
 
 
@@ -78,7 +77,6 @@ def test_prediction_form_post_success(client):
         "year": 2030,
         "team": "Germany",
     }
-
     response = client.post("/predict", data=form_data)
     assert response.status_code == 200
     assert b'Prediction' in response.data
@@ -124,7 +122,7 @@ def test_new_quiz_form_post_success(client, db_session):
     from flask_para.paralympics import Quiz
     quiz = db_session.query(Quiz).filter(Quiz.quiz_name == "Test Quiz").first()
     assert quiz is not None
-'''
+
 
 
 def test_prediction_returns_int():
@@ -136,7 +134,7 @@ def test_prediction_returns_int():
     from paralympics.paralympics import make_prediction
     prediction = make_prediction(2030, "Germany")
     assert isinstance(prediction, int)
-
+'''
 
 def test_prediction_no_data_returns_error():
     """

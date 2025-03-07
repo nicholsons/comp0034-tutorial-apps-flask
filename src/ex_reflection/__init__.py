@@ -14,7 +14,7 @@ class Base(DeclarativeBase):
 db = SQLAlchemy(model_class=Base)
 
 
-def create_app(test_config=None):
+def create_app():
     # create the Flask app
     # You can specify a specific instance path also using `instance_path=your_instance_path`
     app = Flask(__name__, instance_relative_config=True)
@@ -22,13 +22,9 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY='dev',
         # Set the location of the database file called paralympics.db which will be in the app's instance folder
-        SQLALCHEMY_DATABASE_URI="sqlite:///" + os.path.join(app.instance_path, 'paralympics.db'),
+        SQLALCHEMY_DATABASE_URI="sqlite:///" + os.path.join(app.instance_path, 'recycling_data.db'),
         SQLALCHEMY_ECHO=False
     )
-
-    if test_config:
-        # load the test config if passed in
-        app.config.from_mapping(test_config)
 
     # ensure the instance folder exists
     try:
@@ -41,23 +37,10 @@ def create_app(test_config=None):
     db.init_app(app)
 
     with app.app_context():
-        # Optionally, create the database tables
-        # This will only work once the models are defined
-
-        # This imports the models
-        from paralympics import models
-        # If the database file does not exist, it will be created
-        # If the tables do not exist, they will be created but does not overwrite or update existing tables
-        db.create_all()
-
-        # Import and use the function to add the data to the database only if it is empty
-        # If query of the Events returns None, then the database is assumed empty
-        if db.session.execute(db.select(models.Event).limit(1)).first() is None:
-            from paralympics.add_data import add_all_data
-            add_all_data()
+        db.reflect()
 
         # Register the blueprint
-        from paralympics.paralympics import main
+        from ex_reflection.routes import main
         app.register_blueprint(main)
 
     # return the app

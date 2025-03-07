@@ -22,4 +22,4 @@ addopts = "-rA -v"
 testpaths = ["tests"]
 pythonpath = ["src"]
 filterwarnings = ["ignore::DeprecationWarning"]
-log_disable = "werkzeug"
+# log_disable = "werkzeug"

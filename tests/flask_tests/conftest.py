@@ -19,6 +19,7 @@ def app():
     # Location for the temporary testing database
     db_path = importlib.resources.files('data') / 'paralympics_testdb.sqlite'
     db_path_str = str(db_path)
+    # a test config, this will overide the default config in the create_app function
     test_cfg = {
         "TESTING": True,
         "SQLALCHEMY_DATABASE_URI": "sqlite:///" + db_path_str,
