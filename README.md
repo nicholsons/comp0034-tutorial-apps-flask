@@ -15,6 +15,7 @@ The sub-packages are:
 | `ex_jwtextended`   | Simple example using Flask-JWT-Extended                                     | `flask --app ex_jwtextended run --debug`                   |
 | `ex-mlmodel`       | Simple example of an app with a machine learning prediction (Iris data set) | `flask --app "ex_mlmodel:create_app('dev')" run --debug`   |
 | `ex_dash_in_flask` | Simple example hosting a Dash app inside a Flask app                        | `flask --app ex_dash_in_flask run --debug`                 |
+| `ex_reflection`    | Simple example of reflecting an existing database                           | `flask --app ex_reflection run --debug`                    |
 
 
 For the SQLite3 version you need
