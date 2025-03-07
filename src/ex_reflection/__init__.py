@@ -17,7 +17,7 @@ db = SQLAlchemy(model_class=Base)
 def create_app():
     # create the Flask app
     # You can specify a specific instance path also using `instance_path=your_instance_path`
-    app = Flask(__name__, instance_relative_config=True)
+    app = Flask(__name__, instance_relative_config=True, instance_path=os.path.dirname(os.path.abspath(__file__)))
     # configure the Flask app (see later notes on how to generate your own SECRET_KEY)
     app.config.from_mapping(
         SECRET_KEY='dev',
