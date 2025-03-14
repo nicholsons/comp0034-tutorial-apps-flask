@@ -1,10 +1,13 @@
 """ This version of the app only has the routes that have database interaction. """
+import importlib.resources
 import sqlite3
 
+import joblib
+import pandas as pd
 from flask import Blueprint, abort, flash, redirect, render_template, request, url_for
 
 from paralympics_sq3.db import get_db
-from paralympics_sq3.forms import QuizForm
+from paralympics_sq3.forms import PredictionForm, QuizForm
 
 main = Blueprint('main', __name__)
 
@@ -68,3 +71,54 @@ def quiz():
                 # If there is an error, display a message and return to the previous form
                 flash(f'Error adding quiz: {e}', 'danger')
     return render_template('quiz.html', form=form)
+
+
+@main.route('/predict', methods=['GET', 'POST'])
+def predict():
+    form = PredictionForm()
+    form.set_choices()
+
+    if form.validate_on_submit():
+        # Get all values from the form
+        year = form.year.data
+        team = form.team.data
+
+        # Make the prediction
+        prediction = make_prediction(year, team)
+
+        # If the prediction returns an error message rather than a number, print a different message
+        if type(prediction) != int:
+            prediction_text = f"Sorry, insufficient data to predict a result, please select a different team"
+        else:
+            prediction_text = f"Prediction: {team} will win {prediction} medals in {year}!"
+
+        return render_template(
+            "prediction.html", form=form, prediction_text=prediction_text
+        )
+    return render_template("prediction.html", form=form)
+
+
+# Helper functions used in the routes
+# -----------------------------------
+
+def make_prediction(year, team):
+    """Takes the year and team name and predicts how many total medals will be won
+
+    Parameters:
+    year (int): The year of the prediction
+    team (str): The name of the team
+
+    Returns:
+    prediction (str or int): int of the prediction result, or string if error
+    """
+    # The predict() method fails if not in DataFrame format
+    input_data = pd.DataFrame({'Year': [year], 'Team': [team]})
+    try:
+        # Get a prediction from the model
+        with importlib.resources.open_binary('paralympics_sq3', 'model.pkl') as file:
+            model = joblib.load(file)
+            prediction = model.predict(input_data)
+            # Returns a float so convert to int. Handle negative predictions as O.
+            return max(0, int(prediction[0]))
+    except Exception as e:
+        return f"Error making prediction: {e}"
