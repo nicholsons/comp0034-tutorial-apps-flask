@@ -1,8 +1,8 @@
 # COMP0034 2025 Computer practicals (Flask app)
 
-These are worked examples of the activities. 
+These are worked examples of the activities. They are not coursework exemplars!
 
-They are not coursework exemplars!
+Please check `requirements.txt` as you need to add install additional libraries for some of the examples.
 
 The sub-packages are:
 

@@ -1,8 +1,10 @@
+import asyncio
 import importlib.resources
 
 import joblib
 import pandas as pd
 import requests
+from aiohttp import ClientSession
 from flask import Blueprint, abort, flash, redirect, render_template, request, url_for
 
 from paralympics import db
@@ -11,15 +13,6 @@ from paralympics.forms import PredictionForm, QuizForm
 from paralympics.models import Event, Host, HostEvent, Quiz
 
 main = Blueprint('main', __name__)
-
-
-@main.route('/flash')
-def flash_message():
-    """Renders a page with a flash message."""
-    # Generate a Flash message
-    flash('This is a flash message!')
-    # Redirect to the homepage, the flash message should be displayed
-    return redirect(url_for('main.index'))
 
 
 @main.route('/')
@@ -48,8 +41,9 @@ def get_event(event_id):
 
 @main.route('/news')
 def get_news():
-    """Get the top stories from Hacker News.
+    """Get the top 3 stories from Hacker News.
     The page will be slow to load due to the number of requests made to the Hacker News API.
+    TODO: Investigate "Flask[async]" to make the page load faster.
     """
     url = "https://hacker-news.firebaseio.com/v0/topstories.json"
     response = requests.get(url)
@@ -129,6 +123,18 @@ def predict():
     return render_template("prediction.html", form=form)
 
 
+@main.route('/flash')
+def flash_message():
+    """Renders a page with a flash message."""
+    # Generate a Flash message
+    flash('This is a flash message!')
+    # Redirect to the homepage, the flash message should be displayed
+    return redirect(url_for('main.index'))
+
+
+# Helper functions used in the routes
+# -----------------------------------
+
 def make_prediction(year, team):
     """Takes the year and team name and predicts how many total medals will be won
 
@@ -151,3 +157,4 @@ def make_prediction(year, team):
         return max(0, int(prediction[0]))
     except Exception as e:
         return f"Error making prediction: {e}"
+
