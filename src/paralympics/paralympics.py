@@ -1,10 +1,8 @@
-import asyncio
 import importlib.resources
 
 import joblib
 import pandas as pd
 import requests
-from aiohttp import ClientSession
 from flask import Blueprint, abort, flash, redirect, render_template, request, url_for
 
 from paralympics import db
@@ -43,7 +41,7 @@ def get_event(event_id):
 def get_news():
     """Get the top 3 stories from Hacker News.
     The page will be slow to load due to the number of requests made to the Hacker News API.
-    TODO: Investigate "Flask[async]" to make the page load faster.
+    TODO: Investigate "Flask[async]" to load asynchronously.
     """
     url = "https://hacker-news.firebaseio.com/v0/topstories.json"
     response = requests.get(url)
