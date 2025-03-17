@@ -26,8 +26,8 @@ def test_index_success(client):
     """
     response = client.get("/")
     assert response.status_code == 200
-    assert b'Winter' in response.data
-    assert b'Summer' in response.data
+    assert 'Winter' in response.data.decode()
+    assert 'Summer' in response.data.decode()
 
     count_href = response.data.count(b'href')
     assert count_href >= 25
@@ -52,7 +52,7 @@ def test_get_event_success(client):
     """
     response = client.get("/event/1")
     assert response.status_code == 200
-    assert b'Highlights' in response.data
+    assert 'Highlights' in response.data.decode()
 
 
 def test_get_event_not_found(client):
@@ -63,7 +63,7 @@ def test_get_event_not_found(client):
     """
     response = client.get("/event/1000")
     assert response.status_code == 404
-    assert b'Event not found' in response.data
+    assert 'Event not found' in response.data.decode()
 
 
 def test_prediction_form_post_success(client):
@@ -79,7 +79,7 @@ def test_prediction_form_post_success(client):
     }
     response = client.post("/predict", data=form_data)
     assert response.status_code == 200
-    assert b'Prediction' in response.data
+    assert 'Prediction' in response.data.decode()
 
 
 def test_prediction_form_data_missing(client):
@@ -95,11 +95,9 @@ def test_prediction_form_data_missing(client):
 
     response = client.post("/predict", data=form_data)
     assert response.status_code == 200
-    assert b'This field is required' in response.data
+    assert 'This field is required' in response.data.decode()
 
 
-# TODO: Debug this, test fails
-'''
 def test_new_quiz_form_post_success(client, db_session):
     """
     GIVEN a Flask test client
@@ -116,13 +114,12 @@ def test_new_quiz_form_post_success(client, db_session):
 
     response = client.post("/quiz", data=form_data, follow_redirects=True)
     assert response.status_code == 200
-    assert b'Quiz added!' in response.data
+    assert 'Quiz added!' in response.data.decode()
 
     # Check that the new quiz is in the database
-    from flask_para.paralympics import Quiz
-    quiz = db_session.query(Quiz).filter(Quiz.quiz_name == "Test Quiz").first()
+    from paralympics.paralympics import Quiz
+    quiz = db_session.query(Quiz).filter(Quiz.quiz_name == "Test New Quiz").first()
     assert quiz is not None
-
 
 
 def test_prediction_returns_int():
@@ -134,7 +131,7 @@ def test_prediction_returns_int():
     from paralympics.paralympics import make_prediction
     prediction = make_prediction(2030, "Germany")
     assert isinstance(prediction, int)
-'''
+
 
 def test_prediction_no_data_returns_error():
     """
