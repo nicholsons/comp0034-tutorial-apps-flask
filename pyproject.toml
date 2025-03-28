@@ -6,7 +6,7 @@ readme = "README.md"
 
 # Most students will use setuptools, though poetry is also an option
 [build-system]
-requires = ["setuptools",  "setuptools_scm"]
+requires = ["setuptools", ]
 build-backend = "setuptools.build_meta"
 
 # Setuptools configuration see https://setuptools.pypa.io/en/latest/userguide/package_discovery.html#src-layout

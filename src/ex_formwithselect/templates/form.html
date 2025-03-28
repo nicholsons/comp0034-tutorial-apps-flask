@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form with select and radio</title>
+</head>
+<body>
+
+<form method="post">
+    {{ form.hidden_tag() }}
+    {{ form.radio_field.label }}{{ form.radio_field }}
+    <br>
+    {{ form.select_field.label }}{{ form.select_field }}
+    <br>
+    {{ form.submit() }}
+</form>
+<div id="result">{{ result }}</div>
+
+</body>
+</html>

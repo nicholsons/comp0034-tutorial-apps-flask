@@ -10,8 +10,10 @@ def test_print_response_params(client):
     print(response.headers['Content-Type'])
     print("Printing response.status_code:")
     print(response.status_code)
-    print("Printing response.data:")
+    print("Printing response.data which is the page contents in bytes format:")
     print(response.data)
+    print("Printing response.data.decode() which is the HTML: ")
+    print(response.data.decode())
     print("Printing response.json:")
     print(response.json)
 
