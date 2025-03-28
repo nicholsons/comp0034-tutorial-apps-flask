@@ -15,5 +15,4 @@ def test_submit(client):
         'select_field': 'blue',
         'radio_field': 'one'
     })
-    print(response.data)
     assert b'You chose select: blue, radio: one' in response.data
