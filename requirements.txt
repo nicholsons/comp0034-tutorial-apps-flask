@@ -16,8 +16,8 @@ flask-login
 flask-jwt-extended
 httpie
 # For the machine learning app only
-# joblib
-# scikit-learn
+joblib
+scikit-learn
 # For the Flask in Dash app only
 dash
 dash-bootstrap-components
