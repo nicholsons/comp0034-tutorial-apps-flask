@@ -3,7 +3,8 @@ flask-sqlalchemy
 flask-wtf
 wtforms-sqlalchemy
 pytest
-pytest-cov
+# pytest-cov
+
 pandas
 plotly
 xlrd
